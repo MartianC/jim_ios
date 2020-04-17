@@ -43,13 +43,13 @@
     //底栏
     [self.tabBarController.tabBar setHidden:YES];
     //状态栏
-    [self setStarusBarDark:YES];
+    //[self setStarusBarDark:YES];
 }
 - (void)viewWillDisappear:(BOOL)animated
 {
     [super viewWillDisappear:animated];
     [self.tabBarController.tabBar setHidden:NO];
-    [self setStarusBarDark:NO];
+    //[self setStarusBarDark:NO];
 }
 
 

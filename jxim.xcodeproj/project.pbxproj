@@ -562,15 +562,15 @@
 		652172412449A8ED0035DF6E /* Mine */ = {
 			isa = PBXGroup;
 			children = (
-				652172422449A8ED0035DF6E /* JXMineDef.h */,
-				652172432449A8ED0035DF6E /* JXMineVC.h */,
-				652172442449A8ED0035DF6E /* UIImage+PC.h */,
-				652172452449A8ED0035DF6E /* Assets.xcassets */,
 				652172462449A8ED0035DF6E /* Cell */,
 				652172522449A8ED0035DF6E /* Table */,
-				652172572449A8ED0035DF6E /* UIImage+PC.m */,
-				652172582449A8ED0035DF6E /* JXMineVC.m */,
 				652172592449A8ED0035DF6E /* SubVC */,
+				652172432449A8ED0035DF6E /* JXMineVC.h */,
+				652172582449A8ED0035DF6E /* JXMineVC.m */,
+				652172442449A8ED0035DF6E /* UIImage+PC.h */,
+				652172572449A8ED0035DF6E /* UIImage+PC.m */,
+				652172422449A8ED0035DF6E /* JXMineDef.h */,
+				652172452449A8ED0035DF6E /* Assets.xcassets */,
 			);
 			path = Mine;
 			sourceTree = "<group>";
@@ -578,13 +578,13 @@
 		652172462449A8ED0035DF6E /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				652172472449A8ED0035DF6E /* JXMineCommonCell.h */,
-				652172482449A8ED0035DF6E /* JXMinePortraitCell.h */,
 				652172492449A8ED0035DF6E /* HeaderView */,
-				6521724E2449A8ED0035DF6E /* JXMineSignOutCell.m */,
+				652172472449A8ED0035DF6E /* JXMineCommonCell.h */,
 				6521724F2449A8ED0035DF6E /* JXMineCommonCell.m */,
+				652172482449A8ED0035DF6E /* JXMinePortraitCell.h */,
 				652172502449A8ED0035DF6E /* JXMinePortraitCell.m */,
 				652172512449A8ED0035DF6E /* JXMineSignOutCell.h */,
+				6521724E2449A8ED0035DF6E /* JXMineSignOutCell.m */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -593,8 +593,8 @@
 			isa = PBXGroup;
 			children = (
 				6521724A2449A8ED0035DF6E /* JXMinePortraitView.h */,
-				6521724B2449A8ED0035DF6E /* JXMineBalanceView.h */,
 				6521724C2449A8ED0035DF6E /* JXMinePortraitView.m */,
+				6521724B2449A8ED0035DF6E /* JXMineBalanceView.h */,
 				6521724D2449A8ED0035DF6E /* JXMineBalanceView.m */,
 			);
 			path = HeaderView;
@@ -603,9 +603,9 @@
 		652172522449A8ED0035DF6E /* Table */ = {
 			isa = PBXGroup;
 			children = (
+				652172552449A8ED0035DF6E /* JXCommonTableDelegate.h */,
 				652172532449A8ED0035DF6E /* JXCommonTableDelegate.m */,
 				652172542449A8ED0035DF6E /* JXCommonTableData.h */,
-				652172552449A8ED0035DF6E /* JXCommonTableDelegate.h */,
 				652172562449A8ED0035DF6E /* JXCommonTableData.m */,
 			);
 			path = Table;
@@ -614,12 +614,12 @@
 		652172592449A8ED0035DF6E /* SubVC */ = {
 			isa = PBXGroup;
 			children = (
+				6521725C2449A8ED0035DF6E /* Portrait */,
+				652172652449A8ED0035DF6E /* Setting */,
+				652172632449A8ED0035DF6E /* JXMineSubVCBase.h */,
 				6521725A2449A8ED0035DF6E /* JXMineSubVCBase.m */,
 				6521725B2449A8ED0035DF6E /* JXMineWalletVC.h */,
-				6521725C2449A8ED0035DF6E /* Portrait */,
-				652172632449A8ED0035DF6E /* JXMineSubVCBase.h */,
 				652172642449A8ED0035DF6E /* JXMineWalletVC.m */,
-				652172652449A8ED0035DF6E /* Setting */,
 			);
 			path = SubVC;
 			sourceTree = "<group>";
@@ -627,12 +627,12 @@
 		6521725C2449A8ED0035DF6E /* Portrait */ = {
 			isa = PBXGroup;
 			children = (
+				652172622449A8ED0035DF6E /* JXMinePortraitVC.h */,
 				6521725D2449A8ED0035DF6E /* JXMinePortraitVC.m */,
 				6521725E2449A8ED0035DF6E /* JXMinePortraitSettingVC.h */,
+				652172612449A8ED0035DF6E /* JXMinePortraitSettingVC.m */,
 				6521725F2449A8ED0035DF6E /* JXMinePortraitNicknameVC.m */,
 				652172602449A8ED0035DF6E /* JXMinePortraitNicknameVC.h */,
-				652172612449A8ED0035DF6E /* JXMinePortraitSettingVC.m */,
-				652172622449A8ED0035DF6E /* JXMinePortraitVC.h */,
 			);
 			path = Portrait;
 			sourceTree = "<group>";
@@ -642,9 +642,9 @@
 			children = (
 				652172662449A8ED0035DF6E /* Security */,
 				6521726F2449A8ED0035DF6E /* JXMineSettingVC.h */,
-				652172702449A8ED0035DF6E /* JXMineSettingNotification.m */,
-				652172712449A8ED0035DF6E /* JXMineSettingNotification.h */,
 				652172722449A8ED0035DF6E /* JXMineSettingVC.m */,
+				652172712449A8ED0035DF6E /* JXMineSettingNotification.h */,
+				652172702449A8ED0035DF6E /* JXMineSettingNotification.m */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -652,14 +652,14 @@
 		652172662449A8ED0035DF6E /* Security */ = {
 			isa = PBXGroup;
 			children = (
-				652172672449A8ED0035DF6E /* JXMineSettingSecurityPwdWithSms.m */,
 				652172682449A8ED0035DF6E /* JXMineSettingSecurity.h */,
-				652172692449A8ED0035DF6E /* JXMineSettingSecurityPwdWithOldPwd.h */,
-				6521726A2449A8ED0035DF6E /* JXMineSettingSecurityChangePhone.m */,
-				6521726B2449A8ED0035DF6E /* JXMineSettingSecurityPwdWithSms.h */,
 				6521726C2449A8ED0035DF6E /* JXMineSettingSecurity.m */,
-				6521726D2449A8ED0035DF6E /* JXMineSettingSecurityChangePhone.h */,
+				6521726B2449A8ED0035DF6E /* JXMineSettingSecurityPwdWithSms.h */,
+				652172672449A8ED0035DF6E /* JXMineSettingSecurityPwdWithSms.m */,
+				652172692449A8ED0035DF6E /* JXMineSettingSecurityPwdWithOldPwd.h */,
 				6521726E2449A8ED0035DF6E /* JXMineSettingSecurityPwdWithOldPwd.m */,
+				6521726D2449A8ED0035DF6E /* JXMineSettingSecurityChangePhone.h */,
+				6521726A2449A8ED0035DF6E /* JXMineSettingSecurityChangePhone.m */,
 			);
 			path = Security;
 			sourceTree = "<group>";
