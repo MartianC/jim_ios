@@ -1,0 +1,6 @@
+${PODS_ROOT}/Target Support Files/Pods-jxim/Pods-jxim-resources.sh
+${PODS_ROOT}/NIMKit/NIMKit/Resources/NIMKitEmoticon.bundle
+${PODS_ROOT}/NIMKit/NIMKit/Resources/NIMKitResource.bundle
+${PODS_ROOT}/NIMKit/NIMKit/Resources/NIMLanguage.bundle
+${PODS_ROOT}/SVProgressHUD/SVProgressHUD/SVProgressHUD.bundle
+${PODS_ROOT}/TZImagePickerController/TZImagePickerController/TZImagePickerController/TZImagePickerController.bundle

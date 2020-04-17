@@ -1,0 +1,203 @@
+PODS:
+  - AFNetworking/NSURLSession (3.2.1):
+    - AFNetworking/Reachability
+    - AFNetworking/Security
+    - AFNetworking/Serialization
+  - AFNetworking/Reachability (3.2.1)
+  - AFNetworking/Security (3.2.1)
+  - AFNetworking/Serialization (3.2.1)
+  - FLAnimatedImage (1.0.12)
+  - FMDB (2.7.5):
+    - FMDB/standard (= 2.7.5)
+  - FMDB/standard (2.7.5)
+  - IQKeyboardManager (6.5.5)
+  - M80AttributedLabel (1.9.9)
+  - Masonry (1.1.0)
+  - NIMKit (2.12.15):
+    - NIMKit/Lite (= 2.12.15)
+  - NIMKit/Core (2.12.15):
+    - FLAnimatedImage (~> 1.0.12)
+    - M80AttributedLabel (~> 1.9.9)
+    - SDWebImage (~> 5.0.6)
+    - Toast (~> 3.0)
+    - TZImagePickerController (~> 3.2.1)
+    - YYImage (~> 1.0.4)
+    - YYImage/WebP (~> 1.0.4)
+  - NIMKit/Lite (2.12.15):
+    - NIMKit/Core
+    - NIMSDK_LITE (~> 7.4.0)
+  - NIMSDK_LITE (7.4.0)
+  - Qiniu (7.3.2)
+  - Reachability (3.2)
+  - SDWebImage (5.0.6):
+    - SDWebImage/Core (= 5.0.6)
+  - SDWebImage/Core (5.0.6)
+  - SVProgressHUD (2.2.6)
+  - TLKit (1.0):
+    - TLKit/TLCategories (= 1.0)
+    - TLKit/TLComponents (= 1.0)
+    - TLKit/TLShortcut (= 1.0)
+  - TLKit/TLCategories (1.0):
+    - TLKit/TLCategories/Foundation (= 1.0)
+    - TLKit/TLCategories/UIKit (= 1.0)
+  - TLKit/TLCategories/Foundation (1.0):
+    - TLKit/TLCategories/Foundation/NSArray (= 1.0)
+    - TLKit/TLCategories/Foundation/NSBundle (= 1.0)
+    - TLKit/TLCategories/Foundation/NSData (= 1.0)
+    - TLKit/TLCategories/Foundation/NSDate (= 1.0)
+    - TLKit/TLCategories/Foundation/NSDictionary (= 1.0)
+    - TLKit/TLCategories/Foundation/NSFileManager (= 1.0)
+    - TLKit/TLCategories/Foundation/NSMutableArray (= 1.0)
+    - TLKit/TLCategories/Foundation/NSMutableDictionary (= 1.0)
+    - TLKit/TLCategories/Foundation/NSNotificationCenter (= 1.0)
+    - TLKit/TLCategories/Foundation/NSObject (= 1.0)
+    - TLKit/TLCategories/Foundation/NSString (= 1.0)
+    - TLKit/TLCategories/Foundation/NSTimer (= 1.0)
+    - TLKit/TLCategories/Foundation/NSURL (= 1.0)
+  - TLKit/TLCategories/Foundation/NSArray (1.0)
+  - TLKit/TLCategories/Foundation/NSBundle (1.0)
+  - TLKit/TLCategories/Foundation/NSData (1.0)
+  - TLKit/TLCategories/Foundation/NSDate (1.0)
+  - TLKit/TLCategories/Foundation/NSDictionary (1.0)
+  - TLKit/TLCategories/Foundation/NSFileManager (1.0)
+  - TLKit/TLCategories/Foundation/NSMutableArray (1.0)
+  - TLKit/TLCategories/Foundation/NSMutableDictionary (1.0)
+  - TLKit/TLCategories/Foundation/NSNotificationCenter (1.0)
+  - TLKit/TLCategories/Foundation/NSObject (1.0)
+  - TLKit/TLCategories/Foundation/NSString (1.0):
+    - TLKit/TLCategories/Foundation/NSData
+  - TLKit/TLCategories/Foundation/NSTimer (1.0)
+  - TLKit/TLCategories/Foundation/NSURL (1.0)
+  - TLKit/TLCategories/UIKit (1.0):
+    - TLKit/TLCategories/UIKit/UIAlertView (= 1.0)
+    - TLKit/TLCategories/UIKit/UIBarButtonItem (= 1.0)
+    - TLKit/TLCategories/UIKit/UIButton (= 1.0)
+    - TLKit/TLCategories/UIKit/UICollectionViewCell (= 1.0)
+    - TLKit/TLCategories/UIKit/UIColor (= 1.0)
+    - TLKit/TLCategories/UIKit/UIControl (= 1.0)
+    - TLKit/TLCategories/UIKit/UIImage (= 1.0)
+    - TLKit/TLCategories/UIKit/UINavigationBar (= 1.0)
+    - TLKit/TLCategories/UIKit/UINavigationController (= 1.0)
+    - TLKit/TLCategories/UIKit/UINavigationItem (= 1.0)
+    - TLKit/TLCategories/UIKit/UIScrollView (= 1.0)
+    - TLKit/TLCategories/UIKit/UITabBarController (= 1.0)
+    - TLKit/TLCategories/UIKit/UITextField (= 1.0)
+    - TLKit/TLCategories/UIKit/UITextView (= 1.0)
+    - TLKit/TLCategories/UIKit/UIView (= 1.0)
+    - TLKit/TLCategories/UIKit/UIViewController (= 1.0)
+    - TLKit/TLCategories/UIKit/UIWindow (= 1.0)
+  - TLKit/TLCategories/UIKit/UIAlertView (1.0)
+  - TLKit/TLCategories/UIKit/UIBarButtonItem (1.0)
+  - TLKit/TLCategories/UIKit/UIButton (1.0)
+  - TLKit/TLCategories/UIKit/UICollectionViewCell (1.0)
+  - TLKit/TLCategories/UIKit/UIColor (1.0)
+  - TLKit/TLCategories/UIKit/UIControl (1.0)
+  - TLKit/TLCategories/UIKit/UIImage (1.0)
+  - TLKit/TLCategories/UIKit/UINavigationBar (1.0)
+  - TLKit/TLCategories/UIKit/UINavigationController (1.0)
+  - TLKit/TLCategories/UIKit/UINavigationItem (1.0):
+    - TLKit/TLCategories/UIKit/UIBarButtonItem
+  - TLKit/TLCategories/UIKit/UIScrollView (1.0)
+  - TLKit/TLCategories/UIKit/UITabBarController (1.0)
+  - TLKit/TLCategories/UIKit/UITextField (1.0)
+  - TLKit/TLCategories/UIKit/UITextView (1.0)
+  - TLKit/TLCategories/UIKit/UIView (1.0):
+    - TLKit/TLCategories/Foundation/NSObject
+    - TLKit/TLShortcut
+  - TLKit/TLCategories/UIKit/UIViewController (1.0):
+    - TLKit/TLCategories/UIKit/UIBarButtonItem
+    - TLKit/TLCategories/UIKit/UINavigationController
+    - TLKit/TLCategories/UIKit/UIView
+  - TLKit/TLCategories/UIKit/UIWindow (1.0)
+  - TLKit/TLComponents (1.0):
+    - TLKit/TLComponents/TLActionSheet (= 1.0)
+    - TLKit/TLComponents/TLAlertView (= 1.0)
+    - TLKit/TLComponents/TLToast (= 1.0)
+  - TLKit/TLComponents/TLActionSheet (1.0)
+  - TLKit/TLComponents/TLAlertView (1.0)
+  - TLKit/TLComponents/TLToast (1.0):
+    - SVProgressHUD (~> 2.2.5)
+  - TLKit/TLShortcut (1.0)
+  - Toast (3.1.0)
+  - TZImagePickerController (3.2.9)
+  - YTKNetwork (2.1.4):
+    - AFNetworking/NSURLSession (~> 3.0)
+  - YYImage (1.0.4):
+    - YYImage/Core (= 1.0.4)
+  - YYImage/Core (1.0.4)
+  - YYImage/WebP (1.0.4):
+    - YYImage/Core
+  - ZZFLEX (1.0):
+    - Masonry
+
+DEPENDENCIES:
+  - FMDB
+  - IQKeyboardManager
+  - M80AttributedLabel (~> 1.9.9)
+  - Masonry
+  - NIMKit
+  - Qiniu (~> 7.3)
+  - Reachability (~> 3.2)
+  - SVProgressHUD (from `https://github.com/SVProgressHUD/SVProgressHUD.git`)
+  - TLKit (from `https://github.com/tbl00c/TLKit.git`)
+  - TZImagePickerController (~> 3.2.1)
+  - YTKNetwork
+  - ZZFLEX (from `Libary/ZZFLEX`)
+
+SPEC REPOS:
+  trunk:
+    - AFNetworking
+    - FLAnimatedImage
+    - FMDB
+    - IQKeyboardManager
+    - M80AttributedLabel
+    - Masonry
+    - NIMKit
+    - NIMSDK_LITE
+    - Qiniu
+    - Reachability
+    - SDWebImage
+    - Toast
+    - TZImagePickerController
+    - YTKNetwork
+    - YYImage
+
+EXTERNAL SOURCES:
+  SVProgressHUD:
+    :git: https://github.com/SVProgressHUD/SVProgressHUD.git
+  TLKit:
+    :git: https://github.com/tbl00c/TLKit.git
+  ZZFLEX:
+    :path: Libary/ZZFLEX
+
+CHECKOUT OPTIONS:
+  SVProgressHUD:
+    :commit: 4fdf3fdc8703fd9915dae33fc1363c604a06b24e
+    :git: https://github.com/SVProgressHUD/SVProgressHUD.git
+  TLKit:
+    :commit: 70ffbc90a3335962d0fefd3f63bb02c374b955da
+    :git: https://github.com/tbl00c/TLKit.git
+
+SPEC CHECKSUMS:
+  AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
+  FLAnimatedImage: 4a0b56255d9b05f18b6dd7ee06871be5d3b89e31
+  FMDB: 2ce00b547f966261cd18927a3ddb07cb6f3db82a
+  IQKeyboardManager: 3a8b9e603f8b0eeaf5f096a1f2b2cfcf121992ef
+  M80AttributedLabel: 77fedfe63804c989a6de0fa4d400ea8cad3ab441
+  Masonry: 678fab65091a9290e40e2832a55e7ab731aad201
+  NIMKit: c122e715bbff54c08c4b41ab05e8c8130539f4c1
+  NIMSDK_LITE: a19301c74733a24f248517bb6b2259389e7ceeac
+  Qiniu: a248627a07bb8a39c6a11ae8059b7161c363539b
+  Reachability: 33e18b67625424e47b6cde6d202dce689ad7af96
+  SDWebImage: 920f1a2ff1ca8296ad34f6e0510a1ef1d70ac965
+  SVProgressHUD: 6ed134667e9ebb2f33679e8273cd48fd3fa349e5
+  TLKit: 75e3c6d703001e1422afafb9a22d84f7cd5bcfb9
+  Toast: 14a93686d6c8bfe2727afd342414e35660a8a1f3
+  TZImagePickerController: 1f92968aa0e98a06b9e2eccca8560acc19254257
+  YTKNetwork: 19be749c30f0512ada07180f4637b4b67bc8ddc2
+  YYImage: 1e1b62a9997399593e4b9c4ecfbbabbf1d3f3b54
+  ZZFLEX: 6fe8d2dc973495b32a7fe79cb4b00a5b8fb845c8
+
+PODFILE CHECKSUM: 0fb48a3f26620c85fbd9e7e4d6a569f0431a470e
+
+COCOAPODS: 1.9.1
