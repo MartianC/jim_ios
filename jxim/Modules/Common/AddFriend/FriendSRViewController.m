@@ -17,6 +17,7 @@
 #import "JXContactDataCell.h"
 #import "NSString+StringExt.h"
 #import "JXUserDataManager.h"
+#import "JXAccountDetailDatum.h"
 #import "IQKeyboardManager.h"
 
 @interface FriendSRViewController ()
@@ -187,8 +188,10 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    cell.selected = NO;
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if (self.searchAccount) {
+        [self.presentingViewController.navigationController pushViewController:[[JXAccountDetailDatum alloc] initWithAccount:self.searchAccount] animated:YES];
+    }
 }
 
 #pragma mark - UITableViewDataSource

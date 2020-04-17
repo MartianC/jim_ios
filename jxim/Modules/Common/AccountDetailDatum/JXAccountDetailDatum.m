@@ -27,7 +27,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    BOOL isFriend = [NIMSDK.sharedSDK.userManager isMyFriend:self.account.nim_accid];
+    self.view.backgroundColor = [UIColor whiteColor];
+    //BOOL isFriend = [NIMSDK.sharedSDK.userManager isMyFriend:self.account.nim_accid];
     // Do any additional setup after loading the view.
 }
 
