@@ -7,13 +7,12 @@
 //
 
 #import <UIKit/UIKit.h>
-#import "JIMAccountSimple.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface JXAccountDetailDatum : UIViewController
 
--(instancetype)initWithAccount:(JIMAccountSimple *)account;
+-(instancetype)initWithNIMAccId:(NSString *)nimAccId;
 
 @end
 

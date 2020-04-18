@@ -2289,6 +2289,8 @@ NSInteger const kIQPreviousNextButtonToolbarTag     =   -1005;
 
             [invocation invoke];
         }
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:ToolbarButtonAction_PreviousAction object:nil];
     }
 }
 
@@ -2329,6 +2331,8 @@ NSInteger const kIQPreviousNextButtonToolbarTag     =   -1005;
 
             [invocation invoke];
         }
+        
+        [[NSNotificationCenter defaultCenter] postNotificationName:ToolbarButtonAction_NextAction object:nil];
     }
 }
 
@@ -2367,6 +2371,8 @@ NSInteger const kIQPreviousNextButtonToolbarTag     =   -1005;
 
         [invocation invoke];
     }
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:ToolbarButtonAction_DoneAction object:nil];
 }
 
 #pragma mark - Customised textField/textView support.

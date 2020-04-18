@@ -17,6 +17,9 @@
 #import "JXContactDataCell.h"
 #import "NSString+StringExt.h"
 #import "JXUserDataManager.h"
+#import "JXAccountDetailDatum.h"
+#import "IQKeyboardManager.h"
+#import "SVProgressHUD.h"
 
 @interface FriendSRViewController ()
 
@@ -45,6 +48,8 @@
     [self.failedSearch addObject:JXUserDataManager.sharedInstance.userData.jim_account];
     
     [self loadUI];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(keyboardDone) name:ToolbarButtonAction_DoneAction object:nil];
     // Do any additional setup after loading the view.
 }
 
@@ -85,6 +90,8 @@
     _memberData = nil;
     [_searchResults removeAllObjects];
     [_failedSearch removeAllObjects];
+    
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
 }
 
 - (void)updateSearchResultsForSearchController:(UISearchController *)searchController
@@ -99,16 +106,6 @@
 - (void)willPresentSearchController:(UISearchController *)searchController
 {
     self.searchController = searchController;
-}
-
-- (void)willDismissSearchController:(UISearchController *)searchController
-{
-    
-}
-
-- (void)didDismissSearchController:(UISearchController *)searchController
-{
-    
 }
 
 -(void)setSearchAccount:(JIMAccountSimple *)searchAccount
@@ -135,39 +132,54 @@
 
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar
 {
-    if ([NSString isNulOrEmpty:searchBar.text]) {
+    [self doSearch:searchBar.text];
+}
+
+-(void)keyboardDone
+{
+    [self doSearch:self.searchController.searchBar.text];
+}
+
+- (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar
+{
+    [self doSearch:searchBar.text];
+}
+
+-(void)doSearch:(NSString *)searchContent
+{
+    if ([NSString isNulOrEmpty:searchContent]) {
         return;
     }
-
+    
     _searchAccount = nil;
     _memberData = nil;
     
-    if ([self.failedSearch containsObject:searchBar.text]) {
+    if ([self.failedSearch containsObject:searchContent]) {
         self.searchAccount = nil;
         return;
     }
     
-    if ([self.searchResults.allKeys containsObject:searchBar.text]) {
-        self.searchAccount = [self.searchResults objectForKey:searchBar.text];
+    if ([self.searchResults.allKeys containsObject:searchContent]) {
+        self.searchAccount = [self.searchResults objectForKey:searchContent];
     }
     else
     {
-        RequestSearchAccount *api = [[RequestSearchAccount alloc] initWithSearchContent:searchBar.text];
+        RequestSearchAccount *api = [[RequestSearchAccount alloc] initWithSearchContent:searchContent];
         [api startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
             
             if (0 == api.respStatus) {
                 self.searchAccount = api.account;
                 if (self.searchAccount) {
-                    [self.searchResults setValue:api.account forKey:searchBar.text];
+                    [self.searchResults setValue:api.account forKey:searchContent];
                 }
                 else
                 {
-                    [self.failedSearch addObject:searchBar.text];
+                    [self.failedSearch addObject:searchContent];
                 }
                 return;
             }
             
-            [self.failedSearch addObject:searchBar.text];
+            [self.failedSearch addObject:searchContent];
             self.searchAccount = nil;
             
         } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
@@ -182,8 +194,10 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    cell.selected = NO;
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if (self.searchAccount) {
+        [self.presentingViewController.navigationController pushViewController:[[JXAccountDetailDatum alloc] initWithNIMAccId:self.searchAccount.nim_accid] animated:YES];
+    }
 }
 
 #pragma mark - UITableViewDataSource
@@ -211,7 +225,6 @@
         [(JXContactDataCell *)cell refreshUser:self.memberData.contactDataUniProtocol.nimGroupMember];
 
         return cell;
-        
     }
     
     return nil;
