@@ -11,16 +11,16 @@
 
 @interface JXAccountDetailDatum ()
 
-@property(nonatomic,strong) JIMAccountSimple *account;
+@property(nonatomic,copy) NSString *nimAccId;
 
 @end
 
 @implementation JXAccountDetailDatum
 
--(instancetype)initWithAccount:(JIMAccountSimple *)account
+-(instancetype)initWithNIMAccId:(NSString *)nimAccId
 {
     if (self = [super init]) {
-        _account = account;
+        _nimAccId = _nimAccId;
     }
     return self;
 }

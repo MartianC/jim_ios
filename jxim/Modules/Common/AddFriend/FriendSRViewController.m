@@ -19,6 +19,7 @@
 #import "JXUserDataManager.h"
 #import "JXAccountDetailDatum.h"
 #import "IQKeyboardManager.h"
+#import "SVProgressHUD.h"
 
 @interface FriendSRViewController ()
 
@@ -139,6 +140,11 @@
     [self doSearch:self.searchController.searchBar.text];
 }
 
+- (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar
+{
+    [self doSearch:searchBar.text];
+}
+
 -(void)doSearch:(NSString *)searchContent
 {
     if ([NSString isNulOrEmpty:searchContent]) {
@@ -190,7 +196,7 @@
 {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     if (self.searchAccount) {
-        [self.presentingViewController.navigationController pushViewController:[[JXAccountDetailDatum alloc] initWithAccount:self.searchAccount] animated:YES];
+        [self.presentingViewController.navigationController pushViewController:[[JXAccountDetailDatum alloc] initWithNIMAccId:self.searchAccount.nim_accid] animated:YES];
     }
 }
 
@@ -219,7 +225,6 @@
         [(JXContactDataCell *)cell refreshUser:self.memberData.contactDataUniProtocol.nimGroupMember];
 
         return cell;
-        
     }
     
     return nil;
