@@ -17,7 +17,9 @@
 #import "JXContactDataCell.h"
 #import "NSString+StringExt.h"
 #import "JXUserDataManager.h"
+#import "JXAccountDetailDatum.h"
 #import "IQKeyboardManager.h"
+#import "SVProgressHUD.h"
 
 @interface FriendSRViewController ()
 
@@ -138,6 +140,11 @@
     [self doSearch:self.searchController.searchBar.text];
 }
 
+- (void)searchBarTextDidEndEditing:(UISearchBar *)searchBar
+{
+    [self doSearch:searchBar.text];
+}
+
 -(void)doSearch:(NSString *)searchContent
 {
     if ([NSString isNulOrEmpty:searchContent]) {
@@ -187,8 +194,10 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
-    UITableViewCell *cell = [tableView cellForRowAtIndexPath:indexPath];
-    cell.selected = NO;
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    if (self.searchAccount) {
+        [self.presentingViewController.navigationController pushViewController:[[JXAccountDetailDatum alloc] initWithNIMAccId:self.searchAccount.nim_accid] animated:YES];
+    }
 }
 
 #pragma mark - UITableViewDataSource
@@ -216,7 +225,6 @@
         [(JXContactDataCell *)cell refreshUser:self.memberData.contactDataUniProtocol.nimGroupMember];
 
         return cell;
-        
     }
     
     return nil;

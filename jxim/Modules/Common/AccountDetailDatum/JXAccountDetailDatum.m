@@ -11,23 +11,24 @@
 
 @interface JXAccountDetailDatum ()
 
-@property(nonatomic,strong) JIMAccountSimple *account;
+@property(nonatomic,copy) NSString *nimAccId;
 
 @end
 
 @implementation JXAccountDetailDatum
 
--(instancetype)initWithAccount:(JIMAccountSimple *)account
+-(instancetype)initWithNIMAccId:(NSString *)nimAccId
 {
     if (self = [super init]) {
-        _account = account;
+        _nimAccId = _nimAccId;
     }
     return self;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    BOOL isFriend = [NIMSDK.sharedSDK.userManager isMyFriend:self.account.nim_accid];
+    self.view.backgroundColor = [UIColor whiteColor];
+    //BOOL isFriend = [NIMSDK.sharedSDK.userManager isMyFriend:self.account.nim_accid];
     // Do any additional setup after loading the view.
 }
 
