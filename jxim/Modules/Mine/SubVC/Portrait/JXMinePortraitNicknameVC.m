@@ -13,6 +13,7 @@
 #import "UIColor+ColorExt.h"
 #import "RequestModifyNickname.h"
 #import <SVProgressHUD.h>
+#import <NIMKit.h>
 
 @interface JXMinePortraitNicknameVC ()
 
@@ -79,16 +80,48 @@
     if (!self.txf_name.text.length) {
         return;
     }
+    [SVProgressHUD show];
     JIMAccount *user = JX_UserDataManager.userData;
     NSString *newNickname = self.txf_name.text;
     RequestModifyNickname * api = [[RequestModifyNickname alloc] initWithJimId:user.jim_uniqueid Nickname:newNickname];
     [api startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
-        //更新成功
-        JX_UserDataManager.userData.jim_nickname = newNickname;
-        [self.navigationController popViewControllerAnimated:YES];
+        if (0 == api.respStatus) {
+            //更新成功
+            [self updateToNIM];
+            return;
+        }
+        [SVProgressHUD dismiss];
+        [SVProgressHUD showErrorWithStatus:@"更改昵称失败,请重试"];
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
         [SVProgressHUD dismiss];
         [SVProgressHUD showErrorWithStatus:@"更改昵称失败,请重试"];
+    }];
+}
+
+- (void)updateToNIM{
+    NSString *newNickname = self.txf_name.text;
+    if (!newNickname.length) {
+        [SVProgressHUD dismiss];
+        [SVProgressHUD showErrorWithStatus:@"昵称不能为空"];
+        return;
+    }
+    if (newNickname.length > 13) {
+        [SVProgressHUD dismiss];
+        [SVProgressHUD showErrorWithStatus:@"昵称过长"];
+        return;
+    }
+    [[NIMSDK sharedSDK].userManager updateMyUserInfo:@{@(NIMUserInfoUpdateTagNick) : newNickname} completion:^(NSError *error) {
+        [SVProgressHUD dismiss];
+        if (!error) {
+            //更新成功
+            [SVProgressHUD dismiss];
+            JX_UserDataManager.userData.jim_nickname = newNickname;
+            [self.navigationController popViewControllerAnimated:YES];
+            return;
+        }else{
+            [SVProgressHUD dismiss];
+            [SVProgressHUD showErrorWithStatus:@"更改昵称失败,请重试"];
+        }
     }];
 }
 

@@ -8,12 +8,13 @@
 
 #import <UIKit/UIKit.h>
 #import "JXCommonTableData.h"
+#import <NIMKit.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface JXMinePortraitView : UIView
 
-- (void)refreshData;
+- (void)refreshData: (nullable NIMUser *)simpleAccount;
 
 @end
 

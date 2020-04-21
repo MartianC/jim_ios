@@ -10,6 +10,9 @@
 #import "JXUserDataManager.h"
 #import "JXMineSettingSecurity.h"
 #import "JXMineSettingNotification.h"
+#import "JXAccountDetailDatum.h"
+#import <NIMKit.h>
+#import "UIAlertView+JXBlock.h"
 
 @implementation JXMineSettingVC
 
@@ -85,7 +88,7 @@
                 @{
                     Title         :@"退出登录",
                     CellClass     : @"JXMineSignOutCell",
-                    CellAction    :@"onTouchCell:",
+                    CellAction    :@"onTouchLogoutCell:",
                     ShowAccessory : @(NO)
                 },
             ],
@@ -112,8 +115,27 @@
     [self.navigationController pushViewController:vc animated:YES];
 }
 
+- (void)onTouchLogoutCell:(id)sender{
+    UIAlertView *alert = [[UIAlertView alloc] initWithTitle: @"退出当前帐号？" message:nil delegate:nil cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+    [alert showAlertWithCompletionHandler:^(NSInteger alertIndex) {
+        switch (alertIndex) {
+            case 1:
+                [[[NIMSDK sharedSDK] loginManager] logout:^(NSError *error)
+                 {
+                     extern NSString *JXNotificationLogout;
+                     [[NSNotificationCenter defaultCenter] postNotificationName:JXNotificationLogout object:nil];
+                 }];
+                break;
+            default:
+                break;
+        }
+    }];
+}
+
 - (void)onTouchCell:(id)sender{
-    
+//    NSString *uid = [[NIMSDK sharedSDK].loginManager currentAccount];
+//    JXAccountDetailDatum *vc = [[JXAccountDetailDatum alloc] initWithNIMAccId: uid];
+//    [self.navigationController pushViewController:vc animated:YES];
 }
 
 @end

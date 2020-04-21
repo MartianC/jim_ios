@@ -13,6 +13,8 @@
 #import "UIColor+ColorExt.h"
 #import <NIMKit.h>
 #import "NIMAvatarImageView.h"
+#import "JXIMGlobalDef.h"
+#import "UIView+ViewExt.h"
 
 @interface JXMineSignOutCell()
 
@@ -25,8 +27,16 @@
 - (void)refreshData:(JXCommonTableRow *)rowData tableView:(UITableView *)tableView{
     self.btn_signOut = [[UIButton alloc] initWithFrame:CGRectZero];
     [self.btn_signOut setTitle:@"退出登录" forState:UIControlStateNormal];
-    [self.btn_signOut setTitleColor:[UIColor labelColor] forState:UIControlStateNormal];
-    [self.btn_signOut addTarget:self action:@selector(signOut) forControlEvents:UIControlEventTouchUpInside];
+    if (IOS_13) {
+        [self.btn_signOut setTitleColor:[UIColor labelColor] forState:UIControlStateNormal];
+    }
+    else{
+        [self.btn_signOut setTitleColor:[UIColor blackColor] forState:UIControlStateNormal];
+    }
+    if (rowData.cellActionName.length) {
+        SEL action = NSSelectorFromString(rowData.cellActionName);
+        [self.btn_signOut addTarget:tableView.viewController action:action forControlEvents:UIControlEventTouchUpInside];
+    }
     [self addSubview:self.btn_signOut];
     [self loadUI];
 }

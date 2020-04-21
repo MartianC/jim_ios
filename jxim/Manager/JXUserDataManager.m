@@ -32,8 +32,8 @@ JXSingleton_Impl(JXUserDataManager)
 {
     JXLoginData *loginData = [[JXLoginData alloc] init];
     
-    loginData.nimAccount = @"yangfantao";//self.userData.nim_accid;
-    loginData.nimToken = @"yangfantao";//self.userData.nim_token;
+    loginData.nimAccount = @"chengyuren";//self.userData.nim_accid;
+    loginData.nimToken = @"chengyuren";//self.userData.nim_token;
     return loginData;
 }
 

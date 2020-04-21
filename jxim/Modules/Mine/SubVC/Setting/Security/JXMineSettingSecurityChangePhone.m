@@ -17,6 +17,7 @@
 #import <SVProgressHUD.h>
 #import "RequestGetSMSCode.h"
 #import "RequestModifyPhone.h"
+#import <NIMKit.h>
 
 @class JIMAccount;
 
@@ -96,22 +97,39 @@
 
 //更改密码
 - (void)onSubmit{
-    [SVProgressHUD dismiss];
+    [SVProgressHUD show];
     if (_txf_smsCode.text != _sms.code) {
+        [SVProgressHUD dismiss];
         [SVProgressHUD showErrorWithStatus:@"验证码错误"];
         return;
     }
     RequestModifyPhone *api = [[RequestModifyPhone alloc] initWithJimId:self.user.jim_uniqueid Code:self.sms.code CodeId:self.sms.codeId];
     [api startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
         if (0 == api.respStatus) {
+            [self updateToNIM];
+            return;
+        }
+        [SVProgressHUD dismiss];
+        [SVProgressHUD showErrorWithStatus:@"更换手机号失败，请重试"];
+    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
+        [SVProgressHUD dismiss];
+        [SVProgressHUD showErrorWithStatus:@"更换手机号失败，请重试"];
+    }];
+}
+
+- (void)updateToNIM{
+    [[NIMSDK sharedSDK].userManager updateMyUserInfo:@{@(NIMUserInfoUpdateTagMobile) : self.txf_phone.text} completion:^(NSError *error) {
+        [SVProgressHUD dismiss];
+        if (!error) {
             self.user.jim_phone = self.txf_phone.text;
+            [SVProgressHUD dismiss];
             [SVProgressHUD showSuccessWithStatus:@"更换成功"];
             [self.navigationController popViewControllerAnimated:YES];
             return;
+        }else{
+            [SVProgressHUD dismiss];
+            [SVProgressHUD showErrorWithStatus:@"更换手机号失败，请重试"];
         }
-        [SVProgressHUD showErrorWithStatus:@"更换手机号失败，请重试"];
-    } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
-        [SVProgressHUD showErrorWithStatus:@"更换手机号失败，请重试"];
     }];
 }
 

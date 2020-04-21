@@ -18,7 +18,7 @@
 #define JXPortraitCellHeight (300.f + STATUS_BAR_SIZE.height)
 #define JXWalletBalanceCellHeight (200.f + STATUS_BAR_SIZE.height)
 #define JXSettingAvatarCellHeight 70.f
-#define NotchHeight STATUS_BAR_SIZE
+#define NotchHeight STATUS_BAR_SIZE.height
 #define SectionHeaderHeight 10.f
 
 

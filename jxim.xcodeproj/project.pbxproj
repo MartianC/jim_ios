@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		3A929041244D40C6000114BB /* JXAccountDetailSetAliasVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A929040244D40C5000114BB /* JXAccountDetailSetAliasVC.m */; };
 		6503E41A243C9D500029B14A /* RegisterSMSCodeData.m in Sources */ = {isa = PBXBuildFile; fileRef = 6503E419243C9D500029B14A /* RegisterSMSCodeData.m */; };
 		6503E41D243CA04B0029B14A /* RequestPasswordLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = 6503E41C243CA04B0029B14A /* RequestPasswordLogin.m */; };
 		6503E420243CAD5D0029B14A /* RequestLoginSMSCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 6503E41F243CAD5D0029B14A /* RequestLoginSMSCode.m */; };
@@ -166,6 +167,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		3A92903F244D40C5000114BB /* JXAccountDetailSetAliasVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JXAccountDetailSetAliasVC.h; sourceTree = "<group>"; };
+		3A929040244D40C5000114BB /* JXAccountDetailSetAliasVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JXAccountDetailSetAliasVC.m; sourceTree = "<group>"; };
 		62B3E3877F99328C2F445B8C /* Pods-jxim.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-jxim.release.xcconfig"; path = "Target Support Files/Pods-jxim/Pods-jxim.release.xcconfig"; sourceTree = "<group>"; };
 		6503E418243C9D500029B14A /* RegisterSMSCodeData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RegisterSMSCodeData.h; sourceTree = "<group>"; };
 		6503E419243C9D500029B14A /* RegisterSMSCodeData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RegisterSMSCodeData.m; sourceTree = "<group>"; };
@@ -631,8 +634,8 @@
 				6521725D2449A8ED0035DF6E /* JXMinePortraitVC.m */,
 				6521725E2449A8ED0035DF6E /* JXMinePortraitSettingVC.h */,
 				652172612449A8ED0035DF6E /* JXMinePortraitSettingVC.m */,
-				6521725F2449A8ED0035DF6E /* JXMinePortraitNicknameVC.m */,
 				652172602449A8ED0035DF6E /* JXMinePortraitNicknameVC.h */,
+				6521725F2449A8ED0035DF6E /* JXMinePortraitNicknameVC.m */,
 			);
 			path = Portrait;
 			sourceTree = "<group>";
@@ -1279,6 +1282,8 @@
 			children = (
 				65F86DBC24487B5E0011AC70 /* JXAccountDetailDatum.h */,
 				65F86DBD24487B5E0011AC70 /* JXAccountDetailDatum.m */,
+				3A92903F244D40C5000114BB /* JXAccountDetailSetAliasVC.h */,
+				3A929040244D40C5000114BB /* JXAccountDetailSetAliasVC.m */,
 			);
 			path = AccountDetailDatum;
 			sourceTree = "<group>";
@@ -1523,6 +1528,7 @@
 				6524A1902420FD640003847F /* JXRegisterViewController.m in Sources */,
 				652171F02449A2270035DF6E /* RequestModifyGender.m in Sources */,
 				653C331D2425B645005A47E9 /* JXMainStatusManager.m in Sources */,
+				3A929041244D40C6000114BB /* JXAccountDetailSetAliasVC.m in Sources */,
 				65140B1D24403FB1006CA375 /* RecentSessionSRViewController.m in Sources */,
 				65C41698243EF9A000FC92E6 /* JXCustomNotificationDB.m in Sources */,
 				652172792449A8ED0035DF6E /* JXCommonTableDelegate.m in Sources */,

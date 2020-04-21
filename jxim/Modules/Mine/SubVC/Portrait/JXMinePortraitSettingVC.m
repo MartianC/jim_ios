@@ -18,6 +18,9 @@
 #import "RequestPerfectDatum.h"
 #import "RequestUploadHeaderToken.h"
 #import "RequestModifyHeader.h"
+#import "UIImage+JX.h"
+#import "JXFileLocationHelper.h"
+#import <NIMKit.h>
 
 @interface JXMinePortraitSettingVC ()
 
@@ -61,7 +64,12 @@
                                                                             action:@selector(onChangeAvatar)];
     
     UIView *bgView = [[UIView alloc] initWithFrame:CGRectZero];
-    [bgView setBackgroundColor:[UIColor blackColor]];
+    if (IOS_13) {
+        [bgView setBackgroundColor:[UIColor systemBackgroundColor]];
+    }
+    else{
+        [bgView setBackgroundColor:[UIColor whiteColor]];
+    }
     [self.view addSubview: bgView];
     [bgView mas_makeConstraints:^(MASConstraintMaker *make) {
         make.top.mas_equalTo(self.view).with.offset(-144.f);
@@ -187,15 +195,25 @@
 - (void)imagePickerController:(UIImagePickerController *)picker didFinishPickingMediaWithInfo:(NSDictionary *)info
 {
     self.imgHeaderData = [info objectForKey:UIImagePickerControllerEditedImage];
+    [self uploadHeaderToJX];
     
+    [picker dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
+{
+    [picker dismissViewControllerAnimated:YES completion:nil];
+}
+
+
+- (void)uploadHeaderToJX{
     //上传头像
-    //WEAK_SELF;
+    [SVProgressHUD show];
     JIMAccount *user = JX_UserDataManager.userData;
     //获得token
     RequestUploadHeaderToken *api = [[RequestUploadHeaderToken alloc] initWithJimId:user.jim_uniqueid];
     [api startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
         
-        [SVProgressHUD dismiss];
         PerfectDatumData *result = [api perfectDatumData];
         if (result) {
             //上传头像
@@ -215,9 +233,13 @@
                 RequestModifyHeader *api2 = [[RequestModifyHeader alloc] initWithJimId:result.jimId
                                                                                Header:head];
                 [api2 startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
-                    //更新成功
-                    JXUserDataManager.sharedInstance.userData.jim_header = head;
-                    [self refreshHeader];
+                    if (0 == api2.respStatus) {
+                        JXUserDataManager.sharedInstance.userData.jim_header = head;
+                        [self uploadHeaderToNIM];
+                        return;
+                    }
+                    [SVProgressHUD dismiss];
+                    [SVProgressHUD showErrorWithStatus:@"头像上传失败,请重试"];
                 } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
                     [SVProgressHUD dismiss];
                     [SVProgressHUD showErrorWithStatus:@"头像上传失败,请重试"];
@@ -230,16 +252,38 @@
         [SVProgressHUD dismiss];
         [SVProgressHUD showErrorWithStatus:@"头像上传失败,请重试"];
     }];
-    
-    
-    
-    [picker dismissViewControllerAnimated:YES completion:nil];
 }
 
-- (void)imagePickerControllerDidCancel:(UIImagePickerController *)picker
-{
-    [picker dismissViewControllerAnimated:YES completion:nil];
+- (void)uploadHeaderToNIM{
+    UIImage *imageForAvatarUpload = [self.imgHeaderData imageForAvatarUpload];
+    NSString *fileName = [JXFileLocationHelper genFilenameWithExt:@"jpg"];
+    NSString *filePath = [[JXFileLocationHelper getAppDocumentPath] stringByAppendingPathComponent:fileName];
+    NSData *data = UIImageJPEGRepresentation(imageForAvatarUpload, 1.0);
+    BOOL success = data && [data writeToFile:filePath atomically:YES];
+    __weak typeof(self) wself = self;
+    if (success) {
+        [[NIMSDK sharedSDK].resourceManager upload:filePath scene:NIMNOSSceneTypeAvatar progress:nil completion:^(NSString *urlString, NSError *error) {
+            if (!error && wself) {
+                [[NIMSDK sharedSDK].userManager updateMyUserInfo:@{@(NIMUserInfoUpdateTagAvatar):urlString} completion:^(NSError *error) {
+                    if (!error) {
+                        //更新成功
+                        [self refreshHeader];
+                    }else{
+                        [SVProgressHUD dismiss];
+                        [SVProgressHUD showErrorWithStatus:@"头像上传失败,请重试"];
+                    }
+                }];
+            }else{
+                [SVProgressHUD dismiss];
+                [SVProgressHUD showErrorWithStatus:@"头像上传失败,请重试"];
+            }
+        }];
+    }else{
+        [SVProgressHUD dismiss];
+        [SVProgressHUD showErrorWithStatus:@"头像上传失败,请重试"];
+    }
 }
+
 
 @end
 

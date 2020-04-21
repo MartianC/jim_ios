@@ -14,7 +14,6 @@
 #import <SVProgressHUD.h>
 #import "UIFont+FontExt.h"
 #import "UITableViewCell+CellExt.h"
-#import <SVProgressHUD.h>
 #import "RequestModifyLoginPwd.h"
 
 @interface JXMineSettingSecurityPwdWithOldPwd ()

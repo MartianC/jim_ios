@@ -21,6 +21,7 @@
 #import "JXMinePortraitView.h"
 #import "JXMineWalletVC.h"
 #import "JXUserDataManager.h"
+#import "JXAccountDetailDatum.h"
 
 @interface JXMineVC ()<NIMUserManagerDelegate>
 
@@ -189,7 +190,7 @@
 //        };
 //        JXCommonTableRow *rowData = [[JXCommonTableRow alloc] initWithDict:data];
         _headerView = [[JXMinePortraitView alloc] initWithFrame:CGRectZero];
-        [_headerView refreshData];
+        [_headerView refreshData:nil];
         [_tableView addSubview:_headerView];
         //_tableView.tableHeaderView = _headerView;
         
@@ -206,7 +207,7 @@
 
 - (void)refresh{
     if (_headerView != nil) {
-        [_headerView refreshData];
+        [_headerView refreshData:nil];
     }
     [self loadData];
     [self.tableView reloadData];

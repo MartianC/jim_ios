@@ -1,8 +1,8 @@
 //
-//  JXAccountDetailDatum.h
+//  JXAccountDetailSetAliasVC.h
 //  jxim
 //
-//  Created by yangfantao on 2020/4/16.
+//  Created by Xueyue Liu on 2020/4/20.
 //  Copyright © 2020 jxwl. All rights reserved.
 //
 
@@ -10,7 +10,7 @@
 
 NS_ASSUME_NONNULL_BEGIN
 
-@interface JXAccountDetailDatum : UIViewController<UITableViewDelegate,UITableViewDataSource>
+@interface JXAccountDetailSetAliasVC : UIViewController<UITableViewDelegate,UITableViewDataSource>
 
 -(instancetype)initWithNIMAccId:(NSString *)nimAccId;
 

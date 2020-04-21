@@ -13,6 +13,7 @@
 #import "JXMinePortraitNicknameVC.h"
 #import "RequestModifyGender.h"
 #import <SVProgressHUD.h>
+#import <NIMKit.h>
 
 @implementation JXMinePortraitVC
 
@@ -139,16 +140,40 @@
     if (gender != Gender_Male && gender != Gender_Female) {
         return;
     }
+    [SVProgressHUD show];
     JIMAccount *user = JX_UserDataManager.userData;
     RequestModifyGender *api = [[RequestModifyGender alloc] initWithJimId:user.jim_uniqueid Gender:gender];
     [api startWithCompletionBlockWithSuccess:^(__kindof YTKBaseRequest * _Nonnull request) {
-        user.jim_gender = gender;
-        [self loadData];
-        [self.tableView reloadData];
+        if (0 == api.respStatus) {
+            user.jim_gender = gender;
+            [self updateToNIM:gender];
+        }
+        else{
+            [SVProgressHUD dismiss];
+            [SVProgressHUD showErrorWithStatus:@"修改失败,请重试"];
+        }
     } failure:^(__kindof YTKBaseRequest * _Nonnull request) {
         [SVProgressHUD dismiss];
         [SVProgressHUD showErrorWithStatus:@"修改失败,请重试"];
     }];
 }
+
+- (void)updateToNIM: (NSUInteger)gender{
+    NIMUserGender selectedGender;
+    selectedGender = gender == Gender_Male ? NIMUserGenderMale : NIMUserGenderFemale;
+    [[NIMSDK sharedSDK].userManager updateMyUserInfo:@{@(NIMUserInfoUpdateTagGender) : @(selectedGender)} completion:^(NSError *error) {
+        [SVProgressHUD dismiss];
+        if (!error) {
+            [self loadData];
+            [self.tableView reloadData];
+            [SVProgressHUD dismiss];
+            [SVProgressHUD showSuccessWithStatus:@"修改成功"];
+        }else{
+            [SVProgressHUD dismiss];
+            [SVProgressHUD showErrorWithStatus:@"修改失败,请重试"];
+        }
+    }];
+}
+
 
 @end
