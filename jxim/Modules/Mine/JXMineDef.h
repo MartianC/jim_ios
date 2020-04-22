@@ -20,7 +20,7 @@
 #define JXSettingAvatarCellHeight 70.f
 #define NotchHeight STATUS_BAR_SIZE.height
 #define SectionHeaderHeight 10.f
-
+#define JXSettingAboutHeaderHeight 300.f
 
 #pragma mark - TableData
 

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		3A929041244D40C6000114BB /* JXAccountDetailSetAliasVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A929040244D40C5000114BB /* JXAccountDetailSetAliasVC.m */; };
+		3A98668C2450218B006D313D /* JXMineSettingAbout.m in Sources */ = {isa = PBXBuildFile; fileRef = 3A98668B2450218B006D313D /* JXMineSettingAbout.m */; };
 		6503E41A243C9D500029B14A /* RegisterSMSCodeData.m in Sources */ = {isa = PBXBuildFile; fileRef = 6503E419243C9D500029B14A /* RegisterSMSCodeData.m */; };
 		6503E41D243CA04B0029B14A /* RequestPasswordLogin.m in Sources */ = {isa = PBXBuildFile; fileRef = 6503E41C243CA04B0029B14A /* RequestPasswordLogin.m */; };
 		6503E420243CAD5D0029B14A /* RequestLoginSMSCode.m in Sources */ = {isa = PBXBuildFile; fileRef = 6503E41F243CAD5D0029B14A /* RequestLoginSMSCode.m */; };
@@ -169,6 +170,8 @@
 /* Begin PBXFileReference section */
 		3A92903F244D40C5000114BB /* JXAccountDetailSetAliasVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JXAccountDetailSetAliasVC.h; sourceTree = "<group>"; };
 		3A929040244D40C5000114BB /* JXAccountDetailSetAliasVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JXAccountDetailSetAliasVC.m; sourceTree = "<group>"; };
+		3A98668A2450218B006D313D /* JXMineSettingAbout.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = JXMineSettingAbout.h; sourceTree = "<group>"; };
+		3A98668B2450218B006D313D /* JXMineSettingAbout.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = JXMineSettingAbout.m; sourceTree = "<group>"; };
 		62B3E3877F99328C2F445B8C /* Pods-jxim.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-jxim.release.xcconfig"; path = "Target Support Files/Pods-jxim/Pods-jxim.release.xcconfig"; sourceTree = "<group>"; };
 		6503E418243C9D500029B14A /* RegisterSMSCodeData.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = RegisterSMSCodeData.h; sourceTree = "<group>"; };
 		6503E419243C9D500029B14A /* RegisterSMSCodeData.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RegisterSMSCodeData.m; sourceTree = "<group>"; };
@@ -648,6 +651,8 @@
 				652172722449A8ED0035DF6E /* JXMineSettingVC.m */,
 				652172712449A8ED0035DF6E /* JXMineSettingNotification.h */,
 				652172702449A8ED0035DF6E /* JXMineSettingNotification.m */,
+				3A98668A2450218B006D313D /* JXMineSettingAbout.h */,
+				3A98668B2450218B006D313D /* JXMineSettingAbout.m */,
 			);
 			path = Setting;
 			sourceTree = "<group>";
@@ -1505,6 +1510,7 @@
 				65C41661243EF2DF00FC92E6 /* JXMultiRetweetAttachment.m in Sources */,
 				65E551B8242DE13300B40F42 /* JXPinyinConverter.m in Sources */,
 				652172842449A8ED0035DF6E /* JXMineSettingSecurity.m in Sources */,
+				3A98668C2450218B006D313D /* JXMineSettingAbout.m in Sources */,
 				652171EB2449A2270035DF6E /* RequestModifyLoginPwd.m in Sources */,
 				65E551A1242CA5C000B40F42 /* JXContactMemberData.m in Sources */,
 				65C4165D243EF2DF00FC92E6 /* JXSearchLocalHistoryObject.m in Sources */,

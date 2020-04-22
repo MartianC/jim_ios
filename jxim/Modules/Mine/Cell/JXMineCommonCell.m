@@ -17,6 +17,7 @@
 @interface JXMineCommonCell()
 
 @property (nonatomic,strong) UIImageView *redDot;
+@property BOOL bottomLine;
 
 @end
 
@@ -40,7 +41,7 @@
         UISwitch *switchView = [UISwitch new];
         switch (rowData.accessoryType) {
             case AccessoryType_Switch:
-            {
+            {//开关样式
                 [self setSelectionStyle:UITableViewCellSelectionStyleNone];
                 [switchView setOn:[rowData.extraInfo boolValue] animated:NO];
                 [switchView removeTarget:self.viewController action:NULL forControlEvents:UIControlEventValueChanged];
@@ -54,15 +55,17 @@
                 break;
             }
             default:
+                //默认箭头样式
                 [self setAccessoryType:UITableViewCellAccessoryDisclosureIndicator];
                 break;
         }
     }
     //self.accessoryType = rowData.showAccessory ? UITableViewCellAccessoryDisclosureIndicator : UITableViewCellAccessoryNone;
     //分隔线
-    if (rowData.showBottomLine) {
+    if (rowData.showBottomLine && !self.bottomLine) {
         [self createBottomLineWithHeight:1 left:0 right:0];
         [self bottomLineLeftToTextlabel];
+        self.bottomLine = YES;
     }
     
     if (rowData.showRedDot) {

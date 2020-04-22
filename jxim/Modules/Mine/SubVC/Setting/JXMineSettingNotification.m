@@ -27,6 +27,7 @@
 
 - (void)loadData {
     self.user = JX_UserDataManager.userData;
+    NIMPushNotificationSetting *setting = [[NIMSDK sharedSDK].apnsManager currentSetting];
     NSArray *data = @[
         @{
             HeaderTitle  :@"",
@@ -48,6 +49,7 @@
                 @{
                     Title         : @"通知显示消息详情",
                     CellAction    : @"onTouchMsgDetailCell:",
+                    ExtraInfo     : @(setting.type == NIMPushNotificationDisplayTypeDetail? YES : NO),
                     ShowAccessory : @(YES),
                     AccessoryType : @(1),
                 },

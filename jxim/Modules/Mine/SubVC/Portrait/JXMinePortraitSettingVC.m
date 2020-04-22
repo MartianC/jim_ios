@@ -267,6 +267,7 @@
                 [[NIMSDK sharedSDK].userManager updateMyUserInfo:@{@(NIMUserInfoUpdateTagAvatar):urlString} completion:^(NSError *error) {
                     if (!error) {
                         //更新成功
+                        [SVProgressHUD dismiss];
                         [self refreshHeader];
                     }else{
                         [SVProgressHUD dismiss];

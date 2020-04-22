@@ -152,8 +152,8 @@
     }];
     [self.view addSubview: self.tableView];
     [self.tableView mas_makeConstraints:^(MASConstraintMaker *make) {
-        make.left.and.right.and.top.and.bottom.mas_equalTo(0);
-        //make.top.mas_equalTo(-STATUS_BAR_SIZE.height);
+        make.left.and.right.and.top.mas_equalTo(0);
+        make.bottom.mas_equalTo(self.view).with.offset(-self.tabBarController.tabBar.frame.size.height);
     }];
     
     self.headerView.frame = CGRectMake(0,0,self.view.width, JXPortraitCellHeight);
@@ -209,8 +209,8 @@
     if (_headerView != nil) {
         [_headerView refreshData:nil];
     }
-    [self loadData];
-    [self.tableView reloadData];
+    //[self loadData];
+    //[self.tableView reloadData];
 }
 
 

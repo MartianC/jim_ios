@@ -13,6 +13,8 @@
 #import "JXAccountDetailDatum.h"
 #import <NIMKit.h>
 #import "UIAlertView+JXBlock.h"
+#import <SVProgressHUD.h>
+#import "JXMineSettingAbout.h"
 
 @implementation JXMineSettingVC
 
@@ -60,7 +62,7 @@
                 },
                 @{
                     Title         : @"清除缓存",
-                    CellAction    : @"onTouchCell:",
+                    CellAction    : @"onTouchCleanCacheCell:",
                     ShowAccessory : @(YES),
                     ShowBottomLine : @(YES),
                 },
@@ -76,7 +78,7 @@
             RowContent :@[
                 @{
                     Title         :@"关于",
-                    CellAction    :@"onTouchCell:",
+                    CellAction    :@"onTouchAboutCell:",
                     ShowAccessory : @(YES)
                 },
             ],
@@ -130,6 +132,40 @@
                 break;
         }
     }];
+}
+
+- (void)onTouchCleanCacheCell:(id)sender
+{
+    UIAlertController *vc = [UIAlertController alertControllerWithTitle:@"" message:@"清除后，图片、视频等多媒体消息需要重新下载查看。确定清除？" preferredStyle:UIAlertControllerStyleActionSheet];
+    [[vc addAction:@"清除" style:UIAlertActionStyleDestructive handler:^(UIAlertAction *action) {
+        NIMResourceQueryOption *option = [[NIMResourceQueryOption alloc] init];
+        option.timeInterval = 0;
+        [SVProgressHUD show];
+        [[NIMSDK sharedSDK].resourceManager removeResourceFiles:option completion:^(NSError * _Nullable error, long long freeBytes) {
+            [SVProgressHUD dismiss];
+            if (error)
+            {
+                UIAlertController *result = [UIAlertController alertControllerWithTitle:@"" message:@"清除失败！" preferredStyle:UIAlertControllerStyleAlert];
+                [result addAction:@"确定" style:UIAlertActionStyleCancel handler:nil];
+                [result show];
+            }
+            else
+            {
+                CGFloat freeMB = (CGFloat)freeBytes / 1000 / 1000;
+                UIAlertController *result = [UIAlertController alertControllerWithTitle:@"" message:[NSString stringWithFormat:@"成功清理了%.2fMB磁盘空间",freeMB] preferredStyle:UIAlertControllerStyleAlert];
+                [result addAction:@"确定" style:UIAlertActionStyleCancel handler:nil];
+                [result show];
+            }
+        }];
+    }]
+     addAction:@"取消" style:UIAlertActionStyleCancel handler:nil];
+    
+    [vc show];
+}
+
+- (void)onTouchAboutCell:(id)sender{
+    JXMineSettingAbout *vc = [[JXMineSettingAbout alloc] initWithNibName:nil bundle:nil];
+    [self.navigationController pushViewController:vc animated:YES];
 }
 
 - (void)onTouchCell:(id)sender{

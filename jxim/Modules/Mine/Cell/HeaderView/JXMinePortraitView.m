@@ -61,51 +61,65 @@
     }
     
     //留白
-    self.baseView = [[UIView alloc] initWithFrame:CGRectZero];
-    if (IOS_13) {
-        [self.baseView setBackgroundColor: [UIColor systemBackgroundColor]];
+    if (!self.baseView) {
+        self.baseView = [[UIView alloc] initWithFrame:CGRectZero];
+        if (IOS_13) {
+            [self.baseView setBackgroundColor: [UIColor systemBackgroundColor]];
+        }
+        else{
+            [self.baseView setBackgroundColor: [UIColor whiteColor]];
+        }
+        [self addSubview: self.baseView];
     }
-    else{
-        [self.baseView setBackgroundColor: [UIColor whiteColor]];
-    }
-    [self addSubview: self.baseView];
     //背景图
-    self.background = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"icon_mine_portraitBG"]];
-    [self.background setContentMode:UIViewContentModeScaleAspectFill];
-    self.background.clipsToBounds = YES;
-    [self addSubview: self.background];
+    if (!self.background) {
+        self.background = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"icon_mine_portraitBG"]];
+        [self.background setContentMode:UIViewContentModeScaleAspectFill];
+        self.background.clipsToBounds = YES;
+        [self addSubview: self.background];
+    }
     //昵称
-    self.nameLabel      = [[UILabel alloc] initWithFrame:CGRectZero];
-    self.nameLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:NameFontSize];
+    if (!self.nameLabel) {
+        self.nameLabel      = [[UILabel alloc] initWithFrame:CGRectZero];
+        self.nameLabel.font = [UIFont fontWithName:@"Helvetica-Bold" size:NameFontSize];
+        [self.nameLabel sizeToFit];
+        [self addSubview:self.nameLabel];
+    }
     self.nameLabel.text = user.jim_nickname;
-    [self.nameLabel sizeToFit];
-    [self addSubview:self.nameLabel];
     //性别
-    self.gender = [[UIImageView alloc] initWithFrame:CGRectZero];
+    if(!self.gender){
+        self.gender = [[UIImageView alloc] initWithFrame:CGRectZero];
+        if (user.jim_gender == Gender_Male) {
+            [self.gender setImage:[UIImage imageNamed:@"icon_mine_gender_male"]];
+        }
+        else if (user.jim_gender == Gender_Female){
+            [self.gender setImage:[UIImage imageNamed:@"icon_mine_gender_female"]];
+        }
+        [self addSubview:self.gender];
+    }
     if (user.jim_gender == Gender_Male) {
         [self.gender setImage:[UIImage imageNamed:@"icon_mine_gender_male"]];
     }
     else if (user.jim_gender == Gender_Female){
         [self.gender setImage:[UIImage imageNamed:@"icon_mine_gender_female"]];
     }
-    [self addSubview:self.gender];
     //账号
-    self.accountLabel   = [[UILabel alloc] initWithFrame:CGRectZero];
-    self.accountLabel.font = [UIFont systemFontOfSize:AccountFontSize];
-    self.accountLabel.textColor = [UIColor grayColor];
-    if (user.jim_account.length) {
-        self.accountLabel.text = [NSString stringWithFormat:@"游聊号：%@", user.jim_account];
+    if (!self.accountLabel) {
+        self.accountLabel   = [[UILabel alloc] initWithFrame:CGRectZero];
+        self.accountLabel.font = [UIFont systemFontOfSize:AccountFontSize];
+        self.accountLabel.textColor = [UIColor grayColor];
+        [self addSubview:self.accountLabel];
     }
-    else{
-        self.accountLabel.text = @"";
-    }
+    self.accountLabel.text = user.jim_account.length ? [NSString stringWithFormat:@"游聊号：%@", user.jim_account] : @"";
     [self.accountLabel sizeToFit];
-    [self addSubview:self.accountLabel];
+    
     //头像
-    self.avatar = [[UIButton alloc] initWithFrame:CGRectZero];
-    [self addSubview:_avatar];
-    [self.avatar setBackgroundImage:[UIImage imageNamed:@"icon_mine_defaultAvatar"] forState:UIControlStateNormal];
-    [self.avatar setBackgroundImage:[UIImage imageNamed:@"icon_mine_defaultAvatar"] forState:UIControlStateHighlighted];
+    if (!self.avatar) {
+        self.avatar = [[UIButton alloc] initWithFrame:CGRectZero];
+        [self.avatar setBackgroundImage:[UIImage imageNamed:@"icon_mine_defaultAvatar"] forState:UIControlStateNormal];
+        [self.avatar setBackgroundImage:[UIImage imageNamed:@"icon_mine_defaultAvatar"] forState:UIControlStateHighlighted];
+        [self addSubview:self.avatar];
+    }
     SDWebImageManager *manager = [SDWebImageManager sharedManager];
     [manager loadImageWithURL:[NSURL URLWithString:user.jim_header] options:nil context:nil progress:nil completed:^(UIImage * _Nullable image, NSData * _Nullable data, NSError * _Nullable error, SDImageCacheType cacheType, BOOL finished, NSURL * _Nullable imageURL) {
         if (image != nil) {
@@ -113,15 +127,17 @@
             [self.avatar setBackgroundImage:image forState:UIControlStateHighlighted];
         }
     }];
-    [self addSubview:self.avatar];
+
     
     if (self.isSelf) {
         [self.avatar addTarget:self action:@selector(onTouchAvatar) forControlEvents:UIControlEventTouchUpInside];
-        self.avatarEditer = [[UIButton alloc] initWithFrame:CGRectZero];
-        [self.avatarEditer setBackgroundImage:[UIImage imageNamed:@"icon_mine_avaterEditer"] forState:UIControlStateNormal];
-        [self.avatarEditer setBackgroundImage:[UIImage imageNamed:@"icon_mine_avaterEditer"] forState:UIControlStateHighlighted];
-        [self.avatarEditer addTarget:self action:@selector(onTouchAvatar) forControlEvents:UIControlEventTouchUpInside];
-        [self addSubview:self.avatarEditer];
+        if (!self.avatarEditer) {
+            self.avatarEditer = [[UIButton alloc] initWithFrame:CGRectZero];
+            [self.avatarEditer setBackgroundImage:[UIImage imageNamed:@"icon_mine_avaterEditer"] forState:UIControlStateNormal];
+            [self.avatarEditer setBackgroundImage:[UIImage imageNamed:@"icon_mine_avaterEditer"] forState:UIControlStateHighlighted];
+            [self.avatarEditer addTarget:self action:@selector(onTouchAvatar) forControlEvents:UIControlEventTouchUpInside];
+            [self addSubview:self.avatarEditer];
+        }
     }
 
     [self loadUI];
